@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import { people } from "../api/data.js";
 
 export default {
   props: {
@@ -18,8 +18,11 @@ export default {
     },
   },
   methods: {
-    async deletePerson() {
-      await axios.delete(`http://localhost:3000/persons/${this.id}`);
+    deletePerson() {
+      const index = people.findIndex((p) => p.id === this.id);
+      if (index !== -1) {
+        people.splice(index, 1);
+      }
       this.$emit("deleted");
     },
   },

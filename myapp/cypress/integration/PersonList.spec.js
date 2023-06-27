@@ -1,20 +1,17 @@
-// cypress/integration/PersonList.spec.js
+// inside /cypress/integration/personList.spec.js
+
+// Import your data from the api
+import { people } from "../../src/api/data.js";
 
 describe("PersonList", () => {
-  beforeEach(() => {
-    cy.visit("http://localhost:5173/");
+  before(() => {
+    cy.visit("http://localhost:5173"); // change this to the address where your Vue app is being served
   });
 
-  it("displays a list of persons", () => {
-    // This test assumes you have two persons, 'John Doe' and 'Jane Doe'
-    cy.get("td").contains("John Doe");
-    cy.get("td").contains("Jane Doe");
-  });
-
-  it("selects a person when a row is clicked", () => {
-    cy.get("td").contains("John Doe").click();
-    // Check if the person was selected (adapt this according to your app's behavior)
-    // e.g. if the person's name is displayed somewhere else after selection
-    cy.get(".selected-person").contains("John Doe");
+  it("displays list of people correctly", () => {
+    cy.get("table tbody tr").should("have.length", people.length);
+    people.forEach((person, index) => {
+      cy.get("table tbody tr").eq(index).contains(person.name);
+    });
   });
 });

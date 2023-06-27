@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import PersonList from "./components/PersonList.vue";
+import PersonList from "./components/PersonList/PersonList.vue";
 import PersonDetails from "./components/PersonDetails.vue";
 import PersonForm from "./components/PersonForm.vue";
 

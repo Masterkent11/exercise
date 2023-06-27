@@ -20,37 +20,27 @@
 </template>
 
 <script>
-import axios from "axios";
+import { people } from "../api/data.js";
 
 export default {
   data() {
     return {
-      persons: [],
+      persons: people,
     };
   },
-  async created() {
-    await this.fetchPersons();
-  },
   methods: {
-    async fetchPersons() {
-      const response = await axios.get("http://localhost:3000/persons");
-      this.persons = response.data;
+    updatePerson(updatedPerson) {
+      const person = this.persons.find((p) => p.id === updatedPerson.id);
+      if (person) {
+        person.name = updatedPerson.name;
+        person.details = updatedPerson.details;
+      }
     },
-    async updatePerson(updatedPerson) {
-      await axios.put(
-        `http://localhost:3000/persons/${updatedPerson.id}`,
-        updatedPerson
-      );
-      this.persons = this.persons.map((person) => {
-        if (person.id === updatedPerson.id) {
-          return updatedPerson;
-        }
-        return person;
-      });
-    },
-    async deletePerson(personId) {
-      await axios.delete(`http://localhost:3000/persons/${personId}`);
-      this.persons = this.persons.filter((person) => person.id !== personId);
+    deletePerson(personId) {
+      const index = this.persons.findIndex((p) => p.id === personId);
+      if (index !== -1) {
+        this.persons.splice(index, 1);
+      }
     },
   },
 };

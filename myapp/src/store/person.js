@@ -10,5 +10,11 @@ const person = {
         person.details = updatePerson.details;
       }
     },
+    deletePerson(state, personId) {
+      const index = state.findIndex((p) => p.id === personId);
+      if (index !== -1) {
+        state.people.splice(index, 1);
+      }
+    },
   },
 };

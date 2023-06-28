@@ -1,4 +1,4 @@
-const person = {
+const persons = {
   state: {
     people: [],
   },
@@ -22,4 +22,4 @@ const person = {
   },
 };
 
-export default person;
+export default persons;

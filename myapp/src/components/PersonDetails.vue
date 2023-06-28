@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import { people } from "../api/data.js";
 import PersonDelete from "./PersonDelete.vue";
 
 export default {
@@ -78,23 +78,21 @@ export default {
     PersonDelete,
   },
   methods: {
-    async fetchPerson() {
-      const response = await axios.get(
-        `http://localhost:3000/persons/${this.id}`
-      );
-      this.person = response.data;
-      this.editedPerson = { ...this.person };
+    fetchPerson() {
+      const person = people.find((p) => p.id === this.id);
+      this.person = person;
+      this.editedPerson = { ...person };
     },
     startEditing() {
       this.editing = true;
     },
-    async updatePerson() {
-      await axios.put(
-        `http://localhost:3000/persons/${this.id}`,
-        this.editedPerson
-      );
-      this.person = { ...this.editedPerson };
-      this.editing = false;
+    updatePerson() {
+      const index = people.findIndex((p) => p.id === this.id);
+      if (index !== -1) {
+        people[index] = { ...this.editedPerson };
+        this.person = { ...this.editedPerson };
+        this.editing = false;
+      }
     },
     handleDelete() {
       this.person = null;
@@ -102,6 +100,9 @@ export default {
     },
   },
   watch: {
+    id() {
+      this.fetchPerson();
+    },
     person: {
       deep: true,
       handler() {

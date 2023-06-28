@@ -16,5 +16,10 @@ const person = {
         state.people.splice(index, 1);
       }
     },
+    addPerson(state, newPerson) {
+      state.people.push(newPerson);
+    },
   },
 };
+
+export default person;

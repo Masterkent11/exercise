@@ -1,5 +1,5 @@
 import { mount } from "@cypress/vue";
-import PersonForm from "../../src/components/PersonForm.vue";
+import PersonForm from "../../src/components/PersonForm";
 describe("PersonForm.vue", () => {
   it("submits new person", () => {
     const stub = cy.stub();

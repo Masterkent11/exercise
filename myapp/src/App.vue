@@ -47,7 +47,7 @@
 <script>
 import PersonList from "./components/PersonList/PersonList.vue";
 import PersonDetails from "./components/PersonDetails.vue";
-import PersonForm from "./components/PersonForm.vue";
+import PersonForm from "./components/personForm.vue";
 
 export default {
   components: {
@@ -59,7 +59,7 @@ export default {
     return {
       selectedPerson: null,
       creatingNewPerson: false,
-      personListKey: 0, // Reactive property to force re-render of PersonList component
+      personListKey: 0,
     };
   },
   methods: {
@@ -69,7 +69,7 @@ export default {
     },
     clearSelection() {
       this.selectedPerson = null;
-      this.personListKey += 1; // Increment the key to force re-render of PersonList component
+      this.personListKey += 1;
     },
     createPerson() {
       this.selectedPerson = null;
@@ -77,7 +77,7 @@ export default {
     },
     finishCreatingPerson() {
       this.creatingNewPerson = false;
-      this.personListKey += 1; // Increment the key to force re-render of PersonList component
+      this.personListKey += 1;
     },
   },
 };

@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import { people } from "../api/data.js";
 
 export default {
   data() {
@@ -17,12 +17,13 @@ export default {
     };
   },
   methods: {
-    async submit() {
+    submit() {
       const person = {
+        id: Date.now(),
         name: this.name,
         details: this.details,
       };
-      await axios.post("http://localhost:3000/persons", person);
+      people.push(person);
       this.$emit("personCreated"); // Emit the event
       this.name = ""; // Reset the form fields
       this.details = "";

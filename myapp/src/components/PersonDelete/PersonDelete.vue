@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { people } from "../api/data.js";
+import { people } from "../../api/data.js";
 
 export default {
   props: {

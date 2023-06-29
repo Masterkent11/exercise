@@ -57,8 +57,8 @@
 </template>
 
 <script>
-import { people } from "../api/data.js";
-import PersonDelete from "../components/PersonDelete/PersonDelete.vue";
+import { people } from "../../api/data.js";
+import PersonDelete from "../PersonDelete/PersonDelete.vue";
 
 export default {
   data() {

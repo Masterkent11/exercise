@@ -46,7 +46,7 @@
 
 <script>
 import PersonList from "./components/PersonList/PersonList.vue";
-import PersonDetails from "./components/PersonDetails.vue";
+import PersonDetails from "./components/PersonDetails/PersonDetails.vue";
 import PersonForm from "./components/PersonForm/personForm.vue";
 
 export default {

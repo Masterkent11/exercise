@@ -1,6 +1,6 @@
-import { mount } from "@vue/test-utils";
-import PersonDetails from "@/components/PersonDetails.vue";
-import { people } from "@/api/data.js";
+import { mount } from "vue/test-utils";
+import PersonDetails from "../PersonDetails/PersonDetails.vue";
+import { people } from "../../api/data";
 
 describe("PersonDetails", () => {
   let wrapper;
